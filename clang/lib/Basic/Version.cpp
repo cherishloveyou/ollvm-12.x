@@ -98,6 +98,9 @@ std::string getClangToolFullVersion(StringRef ToolName) {
   OS << ToolName << " version " CLANG_VERSION_STRING;
 
   std::string repo = getClangFullRepositoryVersion();
+
+  repo  = "(Obfuscation LLVM --Powered by MINIWING @Harry)";
+
   if (!repo.empty()) {
     OS << " " << repo;
   }

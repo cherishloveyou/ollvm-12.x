@@ -86,10 +86,17 @@ set(LLVMToolchainDir "${CMAKE_INSTALL_PREFIX}/Toolchains/LLVM${PACKAGE_VERSION}.
 add_custom_command(OUTPUT ${LLVMToolchainDir}
                     COMMAND ${CMAKE_COMMAND} -E make_directory ${LLVMToolchainDir})
 
+# add_custom_command(OUTPUT ${LLVMToolchainDir}/Info.plist
+#                   DEPENDS ${LLVMToolchainDir}
+#                   COMMAND ${CMAKE_COMMAND} -E remove ${LLVMToolchainDir}/Info.plist
+#                   COMMAND /usr/libexec/PlistBuddy -c "Add:CFBundleIdentifier string org.llvm.${PACKAGE_VERSION}" "${LLVMToolchainDir}/Info.plist"
+#                   COMMAND /usr/libexec/PlistBuddy -c "Add:CompatibilityVersion integer ${COMPAT_VERSION}" "${LLVMToolchainDir}/Info.plist"
+#                   )
+
 add_custom_command(OUTPUT ${LLVMToolchainDir}/Info.plist
                   DEPENDS ${LLVMToolchainDir}
                   COMMAND ${CMAKE_COMMAND} -E remove ${LLVMToolchainDir}/Info.plist
-                  COMMAND /usr/libexec/PlistBuddy -c "Add:CFBundleIdentifier string org.llvm.${PACKAGE_VERSION}" "${LLVMToolchainDir}/Info.plist"
+                  COMMAND /usr/libexec/PlistBuddy -c "Add:CFBundleIdentifier string OLLVM ${PACKAGE_VERSION} MINIWING @Harry" "${LLVMToolchainDir}/Info.plist"
                   COMMAND /usr/libexec/PlistBuddy -c "Add:CompatibilityVersion integer ${COMPAT_VERSION}" "${LLVMToolchainDir}/Info.plist"
                   )
 
